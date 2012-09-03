@@ -36,4 +36,8 @@ Survivor::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Facebook app credentials
+  FACEBOOK_APP_ID = "178493735608739"
+  FACEBOOK_SECRET = "fec2ea191423abe0a83b24c695473e72"
 end

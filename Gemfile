@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.7'
 gem 'devise'
 gem 'haml-rails'
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -25,6 +26,8 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.2'
+
+gem 'annotate', '2.5.0', group: :development
 
 group :test do
   gem 'capybara', '1.1.2'
