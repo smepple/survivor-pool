@@ -33,6 +33,9 @@ GEM
       rake
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.0.4.2)
+    bootswatch-rails (0.0.12)
+      railties (>= 3.1)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -175,6 +178,8 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (= 2.5.0)
+  bootstrap-sass (~> 2.0.4.1)
+  bootswatch-rails
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
   devise
