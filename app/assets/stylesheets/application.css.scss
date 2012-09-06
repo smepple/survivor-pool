@@ -12,16 +12,16 @@
  *= require_tree .
  */
 
- @import "bootswatch/superhero/variables";
+ @import "bootswatch/united/variables";
 
  @import "bootstrap";
 
  @import "bootstrap-responsive";
 
- @import "bootswatch/superhero/bootswatch";
+ @import "bootswatch/united/bootswatch";
 
 body {
-  padding-top: 40px;
+  padding-top: 60px;
 }
 
 p.lead {
@@ -35,6 +35,15 @@ h1.promo {
   margin: 40px 0px;
 }
 
+h1.headline {
+  font-size: 64px;
+  margin: 36px 0px;
+}
+
+/*.navbar .brand {
+  font-size: 32px;
+}*/
+
 .btn-huge {
   padding: 24px 32px;
   margin: 15px 0px;
@@ -45,8 +54,29 @@ h1.promo {
   border-radius: 7px;
 }
 
-.btn-huge, .btn-huge:hover {
+#error_explanation {
+  padding: 14px 35px 14px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fadfdd;
+  color: #df382c;
+  border: 1px solid #f8d0d4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#error_explanation h2 {
+  font-size: 14px;
+  color: inherit;
+}
+
+#error_explanation > ul {
+  margin-bottom: 0;
+}
+
+/*.btn-huge, .btn-huge:hover {
   -webkit-box-shadow: -4px 4px 0 #124A5B;
   -moz-box-shadow: -4px 4px 0 #124A5B;
   box-shadow: -4px 4px 0 #124A5B;
-}
+}*/

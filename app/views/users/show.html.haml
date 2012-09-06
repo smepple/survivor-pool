@@ -1,0 +1,15 @@
+%h1.headline= @user.username
+- if current_user == @user
+  %a.btn.btn-large.pull-right Join a survivor pool
+  = link_to "Create a survivor pool", new_league_path, class: "btn btn-large btn-primary pull-right" 
+%p.lead= @user.name
+%hr
+
+%h1 My Pools
+.well
+  %p
+    - if @leagues.any?
+      - @leagues.each do |league|
+        = link_to league.name, league_path(league)
+    - else
+      You're not in any pools

@@ -5,6 +5,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'omniauth-facebook'
 gem 'bootswatch-rails'
+gem 'numbers_and_words'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

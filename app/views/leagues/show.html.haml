@@ -1,0 +1,7 @@
+%h1= @league.name
+%p 
+  Owner:
+  %em
+    = link_to @owner.name, user_path(@owner.id)
+
+.well
