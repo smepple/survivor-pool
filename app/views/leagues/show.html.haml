@@ -1,7 +1,9 @@
-%h1= @league.name
-%p 
+%h1.headline= @league.name
+%p.lead
   Owner:
-  %em
-    = link_to @owner.name, user_path(@owner.id)
+  = link_to @owner.name, user_path(@owner.id)
+%hr
 
+%h1 Pool standings
 .well
+  %p There are no members

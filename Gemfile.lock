@@ -188,6 +188,7 @@ DEPENDENCIES
   devise
   haml-rails
   jquery-rails (= 2.0.2)
+  json
   numbers_and_words
   omniauth-facebook
   pg (= 0.12.2)
