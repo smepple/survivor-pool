@@ -4,6 +4,20 @@
   = link_to @owner.name, user_path(@owner.id)
 %hr
 
-%h1 Pool standings
-.well
-  %p There are no members
+%h2 Pool standings
+%table.table.table-bordered.table-hover.table-striped
+  %thead
+    %tr
+      / http://stackoverflow.com/questions/9945620/making-a-table-row-into-a-link-in-rails
+      %th Rank
+      %th Player
+  %tbody
+    %tr
+      %td 1
+      %td= link_to @owner.name, user_path(@owner.id)
+    - if @memberships.any?
+      - @memberships.each do |membership|
+        %tr
+          %td 1
+          - @member = User.find(membership.user_id)
+          %td= link_to @member.name, user_path(@member.id)

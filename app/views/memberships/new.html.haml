@@ -1,0 +1,13 @@
+= form_for @membership, html: {class: "new_membership form-horizontal well"} do |f|
+  %fieldset
+    %legend Join a pool
+    = render 'shared/error_messages', object: f.object
+    .control-group
+      .control-label= label_tag :code
+      .controls
+        = text_field_tag :code, nil, class: "span5", placeholder: "Enter code"
+        %p.help-block 
+          %em Get this code from your pool administrator
+    %div.form-actions
+      = f.submit "Join pool", class: "btn btn-large btn-primary"
+      = link_to "Cancel", root_path, class: "btn btn-large"

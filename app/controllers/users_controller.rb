@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
     find_user
     @leagues = @user.leagues
+    @memberships = @user.memberships
   end
 
 private

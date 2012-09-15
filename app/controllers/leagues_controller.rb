@@ -23,6 +23,7 @@ class LeaguesController < ApplicationController
 
   def show
     @owner = User.find(@league.user_id)
+    @memberships = @league.memberships
   end
 
   def destroy

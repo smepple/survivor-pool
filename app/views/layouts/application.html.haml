@@ -11,6 +11,11 @@
     .navbar-inner
       .container
         %a= link_to "Survivor Pool", root_path, class: "brand"
+        %ul.nav
+          %li
+            = link_to "Create a pool", new_league_path
+          %li
+            = link_to "Join a pool", new_membership_path
         %ul.nav.pull-right
           %li.dropdown
             = link_to "#", data: {toggle: "dropdown"}, class: "dropdown-toggle" do
@@ -24,25 +29,12 @@
                 = link_to "Logout", destroy_user_session_path, method: :delete
 
 .container
+  .span9.offset1
 
-  - flash.each do |key, value|
-    %div{class: "alert alert-#{key}"}= value
+    - flash.each do |key, value|
+      %div{class: "alert alert-#{key}"}= value
 
-  = yield
-
-/ - if user_signed_in?
-/   Logged in as 
-/   %strong = current_user.email
-/   = link_to 'Edit profile', edit_user_registration_path
-/ - else
-/   = link_to "Sign up", new_user_registration_path
-/   = link_to "Login", new_user_session_path
-/   = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
-
-/ %p.notice
-/   = notice
-/ %p.alert
-/   = alert
-
-.footer{:style => "padding: 0 20% 0 20%; margin-top: 120px;"}
-  = debug(params) if Rails.env.development?
+    = yield
+    
+    .footer{:style => "margin-top: 120px;"}
+      = debug(params) if Rails.env.development?

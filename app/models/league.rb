@@ -15,6 +15,7 @@ class League < ActiveRecord::Base
   attr_accessible :code, :description, :name
 
   belongs_to :user
+  has_many :memberships, dependent: :destroy
 
   validates_presence_of :name, :code
   validates_length_of :name, in: 4..20

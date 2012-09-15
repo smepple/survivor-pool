@@ -1,20 +1,19 @@
-.span9.offset1
-  = form_for @league, html: {class: "new_league form-horizontal well"} do |f|
-    %fieldset
-      %legend Create a new pool
-      = render 'shared/error_messages', object: f.object
-      .control-group    
-        .control-label= f.label :name
-        .controls= f.text_field :name, class: "span5", placeholder: "Enter pool name"
-      .control-group
-        .control-label= f.label :description
-        .controls= f.text_area :description, class: "span5", rows: 10, placeholder: "Enter pool description (optional)"
-      .control-group
-        .control-label= f.label :code, "Code"
-        .controls
-          = f.text_field :code, class: "span5", placeholder: "Enter code"
-          %p.help-block 
-            %em For private pools, members will need this code to join.
-      %div.form-actions
-        = f.submit "Create pool", class: "btn btn-large btn-primary btn-block"
-        = link_to "Cancel", root_path, class: "btn btn-large"
+= form_for @league, html: {class: "new_league form-horizontal well"} do |f|
+  %fieldset
+    %legend Create a new pool
+    = render 'shared/error_messages', object: f.object
+    .control-group    
+      .control-label= f.label :name
+      .controls= f.text_field :name, class: "span5", placeholder: "Enter pool name"
+    .control-group
+      .control-label= f.label :description
+      .controls= f.text_area :description, class: "span5", rows: 10, placeholder: "Enter pool description (optional)"
+    .control-group
+      .control-label= f.label :code, "Code"
+      .controls
+        = f.text_field :code, class: "span5", placeholder: "Enter code"
+        %p.help-block 
+          %em For private pools, members will need this code to join.
+    %div.form-actions
+      = f.submit "Create pool", class: "btn btn-large btn-primary"
+      = link_to "Cancel", root_path, class: "btn btn-large"
