@@ -24,6 +24,8 @@ class LeaguesController < ApplicationController
   def show
     @owner = User.find(@league.user_id)
     @memberships = @league.memberships
+    @week = Matchup.where("game_time > ?", Time.now).minimum(:week_id)
+    @year = Time.now.strftime('%Y')
   end
 
   def destroy

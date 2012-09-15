@@ -20,16 +20,16 @@ body {
   padding-top: 60px;
 }
 
-/*p.lead {
+p.promo-lead {
   font-size: 28px;
   margin-top: -5px;
   font-style: italic;
 }
 
 h1.promo {
-  font-size: 104px;
+  font-size: 96px;
   margin: 40px 0px;
-}*/
+}
 
 h1.headline {
   font-size: 64px;
@@ -40,7 +40,7 @@ h1.headline {
   font-size: 32px;
 }*/
 
-/*.btn-huge {
+.btn-huge {
   padding: 24px 32px;
   margin: 15px 0px;
   font-size: 32px;
@@ -50,7 +50,16 @@ h1.headline {
   border-radius: 7px;
 }
 
-#error_explanation {
+span.score {
+  font-size: 16px;
+  padding-left: 40px;
+}
+
+span.pick-label {
+  margin: 0 2px 0 2px;
+}
+
+/*#error_explanation {
   padding: 14px 35px 14px 14px;
   margin-bottom: 18px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);

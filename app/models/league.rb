@@ -16,6 +16,7 @@ class League < ActiveRecord::Base
 
   belongs_to :user
   has_many :memberships, dependent: :destroy
+  has_many :picks
 
   validates_presence_of :name, :code
   validates_length_of :name, in: 4..20

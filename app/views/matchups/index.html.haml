@@ -1,0 +1,22 @@
+%h1 Matchups
+
+%table.table.table-bordered.table-hover.table-striped
+  %thead
+    %tr
+      %th Week
+      / %th Game Time
+      %th Away Team
+      %th Home Team
+  %tbody
+    - @matchups.each do |m|
+      %tr
+        %td= m.week_id
+        / %td= m.game_time.strftime('%b %d %H:%M')
+        %td
+          = image_tag m.away_team_logo_url
+          %strong= m.away_team_name
+          %span.pull-right= m.team_score_away
+        %td
+          = image_tag m.home_team_logo_url
+          %strong= m.home_team_name
+          %span.pull-right= m.team_score_home

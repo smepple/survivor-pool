@@ -1,4 +1,5 @@
 %h1.headline= @league.name
+= link_to "Make a pick", new_league_pick_path(@league, week_id: @week), class: "btn btn-large pull-right"
 %p.lead
   Owner:
   = link_to @owner.name, user_path(@owner.id)
@@ -9,15 +10,20 @@
   %thead
     %tr
       / http://stackoverflow.com/questions/9945620/making-a-table-row-into-a-link-in-rails
-      %th Rank
       %th Player
+      %th Streak
+      %th This Week's Pick
   %tbody
     %tr
-      %td 1
       %td= link_to @owner.name, user_path(@owner.id)
+      %td= @owner.picks.where("league_id = ? AND season_id = ? AND win = ?", @league.id, @year, true).count
+      - @owner_pick = @owner.picks.where("league_id = ? AND season_id = ? AND week_id = ?", @league.id, @year, @week).first
+      %td= @owner_pick.team_name if @owner_pick
     - if @memberships.any?
       - @memberships.each do |membership|
         %tr
-          %td 1
           - @member = User.find(membership.user_id)
           %td= link_to @member.name, user_path(@member.id)
+          %td= @member.picks.where("league_id = ? AND season_id = ? AND win = ?", @league.id, @year, true).count
+          - @member_pick = @member.picks.where("league_id = ? AND season_id = ? AND week_id = ?", @league.id, @year, @week).first
+          %td= @member_pick.team_name if @member_pick

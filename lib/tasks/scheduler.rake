@@ -49,3 +49,20 @@ task update_scores: :environment do
   end
 end
 
+task update_winners: :environment do
+  @picks = Pick.all
+  @picks.each do |p|
+    @matchup = Matchup.find(p.matchup_id)
+    if @matchup.team_score_home?
+      if @matchup.team_score_home > @matchup.team_score_away && p.home?
+        p.win = 1
+        p.save
+      elsif @matchup.team_score_away > @matchup.team_score_home && p.away?
+        p.win = 1
+        p.save
+      else
+        p.win = 0
+      end
+    end
+  end
+end

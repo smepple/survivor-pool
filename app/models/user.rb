@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
 
   has_many :leagues, dependent: :destroy
   has_many :memberships, dependent: :destroy
+  has_many :picks
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|

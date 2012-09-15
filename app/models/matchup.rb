@@ -24,6 +24,8 @@ class Matchup < ActiveRecord::Base
                         :home_team_name, :home_team_logo_url, 
                         :nfl_game_id
 
+  has_many :picks
+
   before_create :mark_dups
   after_create :remove_dups
 

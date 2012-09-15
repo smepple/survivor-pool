@@ -2,8 +2,11 @@ Survivor::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   resources :users, only: [:index, :show]
-  resources :leagues
+  resources :leagues do
+    resources :picks
+  end
   resources :memberships, only: [:new, :create]
+  resources :matchups, only: [:index, :show]
 
   root to: "static_pages#home"
 
