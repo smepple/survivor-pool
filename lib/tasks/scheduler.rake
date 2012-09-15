@@ -29,3 +29,23 @@ task :get_matchups, [:season] => :environment do |t, args|
     i += 1
   end
 end
+
+task update_scores: :environment do
+  require 'nokogiri'
+  require 'open-uri'
+
+  i = 1
+  while i < 18 do
+    url = "http://www.nfl.com/schedules/2012/REG#{i}"
+    doc = Nokogiri::HTML(open(url))
+    doc.css(".schedules-list-matchup").each do |matchup|
+      nfl_game_id = matchup.at_css(".schedules-list-content")["data-gameid"]
+      m = Matchup.find_by_nfl_game_id(nfl_game_id)
+      m.team_score_away = matchup.at_css(".team-score.away").text if matchup.at_css(".team-score.away")
+      m.team_score_home = matchup.at_css(".team-score.home").text if matchup.at_css(".team-score.home")
+      m.save
+    end
+    i += 1
+  end
+end
+

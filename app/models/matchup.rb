@@ -24,8 +24,8 @@ class Matchup < ActiveRecord::Base
                         :home_team_name, :home_team_logo_url, 
                         :nfl_game_id
 
-  before_save :mark_dups
-  after_save :remove_dups
+  before_create :mark_dups
+  after_create :remove_dups
 
   def mark_dups
     dup = Matchup.find_by_nfl_game_id(self.nfl_game_id)
