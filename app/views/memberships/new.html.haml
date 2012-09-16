@@ -1,6 +1,9 @@
-= form_for @membership, html: {class: "new_membership form-horizontal well"} do |f|
+= provide(:title, "Join a pool")
+= provide(:headline, "Join a pool")
+
+= form_for @membership, html: {class: "new_membership form-horizontal"} do |f|
   %fieldset
-    %legend Join a pool
+    / %legend Join a pool
     = render 'shared/error_messages', object: f.object
     .control-group
       .control-label= label_tag :code

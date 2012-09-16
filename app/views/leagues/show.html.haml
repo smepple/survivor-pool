@@ -1,9 +1,8 @@
-%h1.headline= @league.name
+= provide(:title, @league.name)
+= provide(:headline, @league.name)
+= provide(:subhead, "Owner: #{@owner.name}")
+
 = link_to "Make a pick", new_league_pick_path(@league, week_id: @week), class: "btn btn-large pull-right"
-%p.lead
-  Owner:
-  = link_to @owner.name, user_path(@owner.id)
-%hr
 
 %h2 Pool standings
 %table.table.table-bordered.table-hover.table-striped

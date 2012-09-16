@@ -1,9 +1,10 @@
-%h1.headline Pick: Week #{params[:week_id]}
+= provide(:title, "Week #{params[:week_id]} Pick")
+= provide(:headline, "Pick: Week #{params[:week_id]}")
+- w = params[:week_id].to_i.to_words
+= provide(:subhead, "Make your pick for week #{w}")
+
+
 = link_to "Cancel", league_path(@league), class: "btn btn-large pull-right"
-%p.lead 
-  - w = params[:week_id].to_i.to_words
-  Make your pick for week #{w}
-%hr
 
 .pagination.pagination-centered
   %ul

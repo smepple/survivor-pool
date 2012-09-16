@@ -1,4 +1,5 @@
-%h1 Re-send confirmation instructions
+= provide(:title, "Re-send confirmation instructions")
+= provide(:headline, "Re-send confirmation instructions")
 
 %p
   = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|

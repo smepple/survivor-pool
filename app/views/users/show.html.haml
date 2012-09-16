@@ -1,11 +1,11 @@
-.page-header
-  %h1= @user.username
-  - if current_user == @user
-    .btn-group.pull-right
-      = link_to "Create a survivor pool", new_league_path, class: "btn btn-large"
-      = link_to "Join a survivor pool", new_membership_path, class: "btn btn-large"
-  %p.lead= @user.name
-/ %hr
+= provide(:title, @user.username)
+= provide(:headline, @user.username)
+= provide(:subhead, @user.name)
+
+
+/ .btn-group
+/   = link_to "Create a survivor pool", new_league_path, class: "btn btn-large"
+/   = link_to "Join a survivor pool", new_membership_path, class: "btn btn-large"
 
 - if current_user == @user
   %h2 My Pools
