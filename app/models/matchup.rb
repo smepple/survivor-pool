@@ -18,7 +18,6 @@
 #
 
 class Matchup < ActiveRecord::Base
-
   validates_presence_of :season_id, :week_id, :game_time, 
                         :away_team_name, :away_team_logo_url, 
                         :home_team_name, :home_team_logo_url, 

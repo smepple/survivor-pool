@@ -4,7 +4,7 @@
 = form_for @league, html: { class: "new_league form-horizontal" } do |f|
   %fieldset
     = render 'shared/error_messages', object: f.object
-    .control-group    
+    .control-group
       .control-label= f.label :name
       .controls= f.text_field :name, class: "span5", placeholder: "Enter pool name"
     .control-group

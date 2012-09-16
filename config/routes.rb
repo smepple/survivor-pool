@@ -2,8 +2,8 @@ Survivor::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   resources :users, only: [:index, :show]
-  resources :leagues do
-    resources :picks
+  resources :leagues, only: [:show, :new, :create, :destroy, :index] do
+    resources :picks, only: [:show, :new, :create, :edit, :index]
   end
   resources :memberships, only: [:new, :create]
   resources :matchups, only: [:index, :show]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915154404) do
+ActiveRecord::Schema.define(:version => 20120916211302) do
 
   create_table "leagues", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20120915154404) do
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
   end
+
+  add_index "leagues", ["code"], :name => "index_leagues_on_code", :unique => true
+  add_index "leagues", ["user_id"], :name => "index_leagues_on_user_id"
 
   create_table "matchups", :force => true do |t|
     t.integer  "season_id"
@@ -44,6 +47,10 @@ ActiveRecord::Schema.define(:version => 20120915154404) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "memberships", ["league_id"], :name => "index_memberships_on_league_id"
+  add_index "memberships", ["user_id", "league_id"], :name => "index_memberships_on_user_id_and_league_id", :unique => true
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
+
   create_table "picks", :force => true do |t|
     t.integer  "user_id"
     t.integer  "league_id"
@@ -57,6 +64,11 @@ ActiveRecord::Schema.define(:version => 20120915154404) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "picks", ["league_id"], :name => "index_picks_on_league_id"
+  add_index "picks", ["matchup_id"], :name => "index_picks_on_matchup_id"
+  add_index "picks", ["user_id", "league_id", "matchup_id"], :name => "index_picks_on_user_id_and_league_id_and_matchup_id", :unique => true
+  add_index "picks", ["user_id"], :name => "index_picks_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -90,5 +102,6 @@ ActiveRecord::Schema.define(:version => 20120915154404) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

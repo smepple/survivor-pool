@@ -2,11 +2,6 @@
 = provide(:headline, @user.username)
 = provide(:subhead, @user.name)
 
-
-/ .btn-group
-/   = link_to "Create a survivor pool", new_league_path, class: "btn btn-large"
-/   = link_to "Join a survivor pool", new_membership_path, class: "btn btn-large"
-
 - if current_user == @user
   %h2 My Pools
 - else
@@ -29,7 +24,7 @@
           - @league = League.find(membership.league_id)
           %td= link_to @league.name, league_path(@league)
           %td 1
-    - else  
+    - else
       %tr 
         %td
           %em You're not in any pools

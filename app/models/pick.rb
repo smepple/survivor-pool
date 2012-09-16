@@ -17,9 +17,9 @@
 #
 
 class Pick < ActiveRecord::Base
-  attr_accessible :away, :home, :league_id, 
+  attr_accessible :away, :home, :league_id,
                   :matchup_id, :season_id,
-                  :team_name, :user_id, :week_id, 
+                  :team_name, :user_id, :week_id,
                   :win
 
   belongs_to :user

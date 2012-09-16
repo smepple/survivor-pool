@@ -42,7 +42,7 @@
                 = f.hidden_field :away, value: 1
                 = f.submit "Pick", class: "btn pull-right"
           - @current_pick = current_user.picks.find_by_matchup_id(m.id)
-          - if @current_pick 
+          - if @current_pick
             - if @current_pick.team_name == m.away_team_name
               %span.label.label-info.pull-right.pick-label picked
               - if @current_pick.win?
