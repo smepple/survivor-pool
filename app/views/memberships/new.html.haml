@@ -3,7 +3,6 @@
 
 = form_for @membership, html: {class: "new_membership form-horizontal"} do |f|
   %fieldset
-    / %legend Join a pool
     = render 'shared/error_messages', object: f.object
     .control-group
       .control-label= label_tag :code

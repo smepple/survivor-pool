@@ -12,42 +12,12 @@
     = yield
 
 - else
-
-  - if user_signed_in?
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a= link_to "Survivor Pool", root_path, class: "brand"
-          %ul.nav
-            %li
-              = link_to "Create a pool", new_league_path
-            %li
-              = link_to "Join a pool", new_membership_path
-          %ul.nav.pull-right
-            %li.dropdown
-              = link_to "#", data: {toggle: "dropdown"}, class: "dropdown-toggle" do
-                = current_user.username
-                %b.caret
-              %ul.dropdown-menu
-                %li
-                  = link_to "My Profile", user_path(current_user)
-                %li.divider
-                %li
-                  = link_to "Logout", destroy_user_session_path, method: :delete
-
+  
+  = render 'shared/navbar'
   .outer-container
-
     .container.well.well-large
       .span9.offset1
-
-        .page-header
-          %h1.headline= yield(:headline)
-          %p.lead.muted= yield(:subhead)
-
-        - flash.each do |key, value|
-          %div{class: "alert alert-#{key}"}= value
-
+        = render 'shared/header'
+        = render 'shared/flash_messages'
         = yield
-        
-        .footer{:style => "margin-top: 120px;"}
-          = debug(params) if Rails.env.development?
+        = render 'shared/footer'
