@@ -19,7 +19,6 @@ class League < ActiveRecord::Base
   has_many :picks
 
   validates_presence_of :name, :code
-  validates_length_of :name, in: 4..20
-  validates_length_of :code, in: 4..20
+  validates_length_of :name, :code, in: 4..20
   validates_uniqueness_of :code
 end

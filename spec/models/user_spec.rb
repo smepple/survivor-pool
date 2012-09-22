@@ -32,5 +32,44 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before do
+    @user = User.create do |u|
+              u.email = 'testuser@example.com'
+              u.username = 'testuserfoo'
+              u.name = 'Test User'
+              u.password = 'foobarbaz'
+            end
+  end
+
+  subject { @user }
+
+  it { should be_valid }
+
+  it { should respond_to :email }
+  it { should respond_to :encrypted_password }
+  it { should respond_to :reset_password_token }
+  it { should respond_to :reset_password_sent_at }
+  it { should respond_to :remember_created_at }
+  it { should respond_to :sign_in_count }
+  it { should respond_to :current_sign_in_at }
+  it { should respond_to :last_sign_in_at }
+  it { should respond_to :current_sign_in_ip }
+  it { should respond_to :last_sign_in_ip }
+  it { should respond_to :confirmation_token }
+  it { should respond_to :confirmed_at }
+  it { should respond_to :confirmation_sent_at }
+  it { should respond_to :unconfirmed_email }
+  it { should respond_to :failed_attempts }
+  it { should respond_to :unlock_token }
+  it { should respond_to :locked_at }
+  it { should respond_to :authentication_token }
+  it { should respond_to :provider }
+  it { should respond_to :uid }
+  it { should respond_to :username }
+  it { should respond_to :name }
+  it { should respond_to :leagues }
+  it { should respond_to :memberships }
+  it { should respond_to :picks }
+  it { should respond_to :password_required? }
 end
