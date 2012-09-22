@@ -1,7 +1,7 @@
 = provide(:title, "Join a pool")
 = provide(:headline, "Join a pool")
 
-= form_for @membership, html: {class: "new_membership form-horizontal"} do |f|
+= form_for @membership, html: { class: "new_membership form-horizontal" } do |f|
   %fieldset
     = render 'shared/error_messages', object: f.object
     .control-group
@@ -12,4 +12,4 @@
           %em Get this code from your pool administrator
     %div.form-actions
       = f.submit "Join pool", class: "btn btn-large btn-primary"
-      = link_to "Cancel", root_path, class: "btn btn-large"
+      = link_to "Cancel", :back, class: "btn btn-large"

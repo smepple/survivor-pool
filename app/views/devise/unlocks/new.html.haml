@@ -1,11 +1,15 @@
 = provide(:title, "Re-send unlock instructions")
 = provide(:headline, "Re-send unlock instructions")
 
-%p
-  = form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
+= form_for resource, :validate => true, :as => resource_name, :url => unlock_path(resource_name), :html => { class: "new_user form-horizontal", :method => :post } do |f|
+  %fieldset
     = render 'devise/shared/error_messages'
-    = f.label :email
-    = f.email_field :email
-    %p= f.submit "Re-send unlock instructions", class: "btn btn-large btn-primary"
+    .control-group
+      .control-label= f.label :email
+      .controls= f.email_field :email
+    .form-actions
+      = f.submit "Re-send unlock instructions", class: "btn btn-large btn-primary"
+      = render 'shared/back_button'
+
 
 = render "devise/shared/links"

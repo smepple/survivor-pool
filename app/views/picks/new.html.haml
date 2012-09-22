@@ -4,7 +4,8 @@
 = provide(:subhead, "Make your pick for week #{w}")
 
 
-= link_to "Cancel", league_path(@league), class: "btn btn-large pull-right"
+/ = link_to "Cancel", :back, class: "btn btn-large pull-right"
+= render partial: 'shared/back_button', locals: { add_class: "pull-right" }
 
 = render 'pagination_links'
 

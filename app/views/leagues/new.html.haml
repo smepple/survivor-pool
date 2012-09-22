@@ -1,7 +1,7 @@
 = provide(:title, "Create a pool")
 = provide(:headline, "Create a pool")
 
-= form_for @league, html: { class: "new_league form-horizontal" } do |f|
+= form_for @league, :validate => true, html: { class: "new_league form-horizontal" } do |f|
   %fieldset
     = render 'shared/error_messages', object: f.object
     .control-group
@@ -16,6 +16,6 @@
         = f.text_field :code, class: "span5", placeholder: "Enter code"
         %p.help-block 
           %em For private pools, members will need this code to join.
-    %div.form-actions
+    .form-actions
       = f.submit "Create pool", class: "btn btn-large btn-primary"
-      = link_to "Cancel", root_path, class: "btn btn-large"
+      = render 'shared/back_button'

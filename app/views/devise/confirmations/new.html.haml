@@ -1,11 +1,14 @@
 = provide(:title, "Re-send confirmation instructions")
 = provide(:headline, "Re-send confirmation instructions")
 
-%p
-  = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-    = render 'devise/shared/error_messages'
-    = f.label :email
-    = f.email_field :email
-    %p= f.submit "Re-send confirmation", class: "btn btn-large btn-primary"
+  = form_for resource, :validate => true, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post } do |f|
+    %fieldset
+      = render 'devise/shared/error_messages'
+      .control-group
+        .control-label= f.label :email
+        .controls= f.email_field :email
+      .form-actions
+        = f.submit "Re-send confirmation", class: "btn btn-large btn-primary"
+        = render 'shared/back_button'
 
 = render "devise/shared/links"
