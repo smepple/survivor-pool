@@ -17,11 +17,15 @@
  @import "bootstrap-responsive";
 
 body {
-  background-image: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/brushed_alu_dark.png);
+  /*background-image: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/squares.png);*/
 }
 
 body.promo {
   background: white;
+}
+
+.main {
+  padding: 3% 0 10% 0;
 }
 
 .well, .form-actions {
@@ -34,6 +38,14 @@ body.promo {
 
 .navbar .brand, .navbar .nav > li > a {
   color: #777;
+}
+
+.navbar {
+  /*padding: 0 15px 0 15px;*/
+}
+
+.navbar-form {
+  padding-left: 10px;
 }
 
 p.promo-lead {
@@ -133,7 +145,7 @@ span.pick-label {
   /*background: -o-linear-gradient(45deg,  #020031 0%,#6d3353 100%);*/ /* Opera 11.10+ */
   /*background: -ms-linear-gradient(45deg,  #020031 0%,#6d3353 100%);*/ /* IE10+ */
   /*background: linear-gradient(45deg,  #020031 0%,#6d3353 100%);*/ /* W3C */
-  background-image: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/brushed_alu_dark.png);
+  background-image: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/inflicted.png);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
      -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);

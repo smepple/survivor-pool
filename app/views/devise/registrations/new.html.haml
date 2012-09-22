@@ -5,15 +5,21 @@
   %fieldset
     = render 'devise/shared/error_messages'
     .control-group
+      .control-label= f.label :name
+      .controls= f.email_field :name, placeholder: "Enter first and last name"
+    .control-group
+      .control-label= f.label :username
+      .controls= f.email_field :username, placeholder: "Enter username"
+    .control-group
       .control-label= f.label :email
-      .controls= f.email_field :email
+      .controls= f.email_field :email, placeholder: "Enter email"
     - if f.object.password_required?
       .control-group
         .control-label= f.label :password
-        .controls= f.password_field :password
+        .controls= f.password_field :password, placeholder: "Enter password"
       .control-group
-        .control-label= f.label :password_confirmation, "Confirm Password"
-        .controls= f.password_field :password_confirmation
+        .control-label= f.label :password_confirmation
+        .controls= f.password_field :password_confirmation, placeholder: "Confirm password"
       .form-actions
         = f.submit "Sign up", class: "btn btn-large btn-primary"
         = render 'shared/back_button'

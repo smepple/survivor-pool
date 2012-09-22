@@ -1,21 +1,21 @@
-= provide(:title, "Create a pool")
-= provide(:headline, "Create a pool")
+= provide(:title, "Create a league")
+= provide(:headline, "Create a league")
 
 = form_for @league, :validate => true, html: { class: "new_league form-horizontal" } do |f|
   %fieldset
     = render 'shared/error_messages', object: f.object
     .control-group
       .control-label= f.label :name
-      .controls= f.text_field :name, class: "span5", placeholder: "Enter pool name"
+      .controls= f.text_field :name, class: "span5", placeholder: "Enter league name"
     .control-group
       .control-label= f.label :description
-      .controls= f.text_area :description, class: "span5", rows: 10, placeholder: "Enter pool description (optional)"
+      .controls= f.text_area :description, class: "span5", rows: 10, placeholder: "Enter league description (optional)"
     .control-group
       .control-label= f.label :code, "Code"
       .controls
         = f.text_field :code, class: "span5", placeholder: "Enter code"
         %p.help-block 
-          %em For private pools, members will need this code to join.
+          %em For private leagues, members will need this code to join.
     .form-actions
-      = f.submit "Create pool", class: "btn btn-large btn-primary"
+      = f.submit "Create league", class: "btn btn-large btn-primary"
       = render 'shared/back_button'

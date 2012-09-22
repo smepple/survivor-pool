@@ -1,28 +1,51 @@
 - if user_signed_in?
   .navbar.navbar-fixed-top
     .navbar-inner
+      %ul.nav
+        %li
+          .navbar-form
+            = link_to :back, class: "btn btn-navbar-back" do
+              %i.icon-circle-arrow-left
+              Back
       .container
         / .btn-navbar is used as the toggle for collapsed navbar content
         %a.btn.btn-navbar{ "data-toggle" => "collapse", "data-target" => ".nav-collapse" }
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a= link_to "Survivor Pool", root_path, class: "brand"
+        = link_to "Survivor Pool", root_path, class: "brand"
         / Everything you want hidden at 940px or less, place within here
         .nav-collapse
-          %ul.nav
-            %li
-              = link_to "Create a pool", new_league_path
-            %li
-              = link_to "Join a pool", new_membership_path
           %ul.nav.pull-right
             %li.dropdown
-              = link_to "#", data: {toggle: "dropdown"}, class: "dropdown-toggle" do
-                = current_user.username
+              = link_to "#", data: { toggle: "dropdown"} , class: "dropdown-toggle" do
+                Leagues
                 %b.caret
               %ul.dropdown-menu
                 %li
-                  = link_to "My Profile", user_path(current_user)
+                  = link_to new_league_path do
+                    %i.icon-plus-sign
+                    Create a league
+                %li
+                  = link_to new_membership_path do
+                    %i.icon-ok-sign
+                    Join a league
+            %li.dropdown
+              = link_to "#", data: { toggle: "dropdown"} , class: "dropdown-toggle" do
+                Hello,
+                %strong= current_user.username
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to user_path(current_user) do
+                    %i.icon-user
+                    My Profile
+                %li
+                  = link_to edit_user_registration_path(current_user) do
+                    %i.icon-edit
+                    Edit profile
                 %li.divider
                 %li
-                  = link_to "Logout", destroy_user_session_path, method: :delete
+                  = link_to destroy_user_session_path, method: :delete do
+                    %i.icon-off
+                    Sign out

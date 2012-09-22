@@ -30,12 +30,16 @@
 #
 
 class User < ActiveRecord::Base
+  # Virtual attribute for authenticating by either username or email
+  # This is in addition to a real persisted field like 'username'
+  attr_accessor :login
+
   devise :database_authenticatable, :token_authenticatable,
          :registerable, :recoverable, :rememberable, :trackable, 
          :validatable, :lockable, :omniauthable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :username
+  attr_accessible :email, :password, :password_confirmation, 
+                  :remember_me, :username, :name, :login
 
   has_many :leagues, dependent: :destroy
   has_many :memberships, dependent: :destroy
@@ -47,11 +51,21 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email = auth.info.email
       user.name = auth.info.name
+      user.password = user.generate_password
       unless auth.info.nickname.blank?
         user.username = auth.info.nickname
       else
         user.username = "#{auth.info.firstname.downcase}_#{auth.info.lastname.downcase}"
       end
+    end
+  end
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
     end
   end
 
@@ -77,4 +91,9 @@ class User < ActiveRecord::Base
   #     super
   #   end
   # end
+
+  def generate_password
+    password = SecureRandom.urlsafe_base64
+    # self.password_confirmation = self.password
+  end
 end

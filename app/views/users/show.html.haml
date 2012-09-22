@@ -3,20 +3,20 @@
 = provide(:subhead, @user.name)
 
 - if current_user == @user
-  %h2 My Pools
+  %h2 My Leagues
 - else
-  %h2 Pools
+  %h2 Leagues
 %table.table.table-bordered.table-hover.table-striped
   %thead
     %tr
       / http://stackoverflow.com/questions/9945620/making-a-table-row-into-a-link-in-rails
-      %th Pool
+      %th League
       %th Position
   %tbody
     = render 'leagues'
     = render 'memberships'
-    - if @leagues.nil? && @memberships.nil?
+    - if !@leagues.any? && !@memberships.any?
       %tr 
         %td
-          %em You're not in any pools
+          %em You're not in any leagues
         %td

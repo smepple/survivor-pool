@@ -13,7 +13,7 @@ class LeaguesController < ApplicationController
     @user = User.find(current_user.id)
     @league = @user.leagues.create(params[:league])
     if @league.save
-      flash[:success] = "Successfully created pool"
+      flash[:success] = "Successfully created league"
       redirect_to user_path(@user)
     else
       # flash[:error] = "Oops"

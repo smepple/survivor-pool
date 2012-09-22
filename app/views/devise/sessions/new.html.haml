@@ -1,18 +1,16 @@
 = provide(:title, "Sign in")
 = provide(:headline, "Sign in")
 
-= form_for resource, :validate => true, :as => resource_name, :url => session_path(resource_name), html: { class: "new_user form-horizontal" } do |f|
+= form_for resource, :as => resource_name, :url => session_path(resource_name), html: { class: "new_user form-horizontal" } do |f|
   %fieldset
     .control-group
-      .control-label= f.label :email
-      .controls= f.email_field :email
+      .control-label= f.label :login
+      .controls= f.text_field :login, placeholder: "Enter username or email"
     .control-group
       .control-label= f.label :password
-      .controls= f.password_field :password
+      .controls= f.password_field :password, placeholder: "Enter password"
     - if devise_mapping.rememberable?
-      .control-group
-        .control-label= f.label :remember_me
-        .controls= f.check_box :remember_me
+      = f.hidden_field :remember_me, value: 1
     .form-actions
       = f.submit "Sign in", class: "btn btn-large btn-primary"
       = render 'shared/back_button'

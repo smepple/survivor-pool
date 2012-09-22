@@ -1,5 +1,5 @@
-= provide(:title, "Join a pool")
-= provide(:headline, "Join a pool")
+= provide(:title, "Join a league")
+= provide(:headline, "Join a league")
 
 = form_for @membership, html: { class: "new_membership form-horizontal" } do |f|
   %fieldset
@@ -9,7 +9,7 @@
       .controls
         = text_field_tag :code, nil, class: "span5", placeholder: "Enter code"
         %p.help-block
-          %em Get this code from your pool administrator
+          %em Get this code from your league administrator
     %div.form-actions
-      = f.submit "Join pool", class: "btn btn-large btn-primary"
+      = f.submit "Join league", class: "btn btn-large btn-primary"
       = link_to "Cancel", :back, class: "btn btn-large"
