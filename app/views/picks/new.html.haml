@@ -6,15 +6,7 @@
 
 = link_to "Cancel", league_path(@league), class: "btn btn-large pull-right"
 
-.pagination.pagination-centered
-  %ul
-    - @weeks.each do |week|
-      - if week.to_s == params[:week_id]
-        %li.active
-          = link_to "#{week}", "#"
-      - else
-        %li
-          = link_to "#{week}", new_league_pick_path(@league, week_id: week)
+= render 'pagination_links'
 
 %table.table.table-bordered.table-hover.table-striped
   %thead
@@ -24,57 +16,6 @@
       %th Home Team
   %tbody
     - @matchups.each do |m|
-      %tr
-        / %td= m.game_time.strftime('%b %d %H:%M')
-        %td
-          = image_tag m.away_team_logo_url
-          %strong= m.away_team_name
-          %span.score.pull-right= m.team_score_away
-          - if params[:week_id].to_i >= @current_week
-            - unless current_user.picks.where(league_id: @league.id, season_id: m.season_id, week_id: m.week_id).exists?
-              = form_for @pick, url: league_picks_path, html: { style: "display: inline;" } do |f|
-                = f.hidden_field :league_id, value: @league.id
-                = f.hidden_field :season_id, value: m.season_id
-                = f.hidden_field :week_id, value: m.week_id
-                = f.hidden_field :matchup_id, value: m.id
-                = f.hidden_field :team_name, value: m.away_team_name
-                = f.hidden_field :home, value: 0
-                = f.hidden_field :away, value: 1
-                = f.submit "Pick", class: "btn pull-right"
-          - @current_pick = current_user.picks.find_by_matchup_id(m.id)
-          - if @current_pick
-            - if @current_pick.team_name == m.away_team_name
-              %span.label.label-info.pull-right.pick-label picked
-              - if @current_pick.win?
-                %span.label.label-success.pull-right.pick-label won
-        %td
-          = image_tag m.home_team_logo_url
-          %strong= m.home_team_name
-          %span.score.pull-right= m.team_score_home
-          - if params[:week_id].to_i >= @current_week
-            - unless current_user.picks.where(league_id: @league.id, season_id: m.season_id, week_id: m.week_id).exists?
-              = form_for @pick, url: league_picks_path, html: { style: "display: inline;" } do |f|
-                = f.hidden_field :league_id, value: @league.id
-                = f.hidden_field :season_id, value: m.season_id
-                = f.hidden_field :week_id, value: m.week_id
-                = f.hidden_field :matchup_id, value: m.id
-                = f.hidden_field :team_name, value: m.home_team_name
-                = f.hidden_field :home, value: 1
-                = f.hidden_field :away, value: 0
-                = f.submit "Pick", class: "btn pull-right"
-          - @current_pick = current_user.picks.find_by_matchup_id(m.id)
-          - if @current_pick 
-            - if @current_pick.team_name == m.home_team_name
-              %span.label.label-info.pull-right.pick-label picked
-              - if @current_pick.win?
-                %span.label.label-success.pull-right.pick-label won
+      = render 'matchup', object: m
 
-.pagination.pagination-centered
-  %ul
-    - @weeks.each do |week|
-      - if week.to_s == params[:week_id]
-        %li.active
-          = link_to "#{week}", "#"
-      - else
-        %li
-          = link_to "#{week}", new_league_pick_path(@league, week_id: week)
+= render 'pagination_links'

@@ -13,18 +13,9 @@
       %th Pool
       %th Position
   %tbody
-    - if @leagues.any?
-      - @leagues.each do |league|
-        %tr
-          %td= link_to league.name, league_path(league)
-          %td 1
-    - elsif @memberships.any?
-      - @memberships.each do |membership|
-        %tr
-          - @league = League.find(membership.league_id)
-          %td= link_to @league.name, league_path(@league)
-          %td 1
-    - else
+    = render 'leagues'
+    = render 'memberships'
+    - if @leagues.nil? && @memberships.nil?
       %tr 
         %td
           %em You're not in any pools

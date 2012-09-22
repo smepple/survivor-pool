@@ -1,0 +1,6 @@
+- if @memberships.any?
+  - @memberships.each do |membership|
+    %tr
+      - @league = League.find(membership.league_id)
+      %td= link_to @league.name, league_path(@league)
+      %td 1

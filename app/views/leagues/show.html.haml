@@ -14,8 +14,7 @@
   %tbody
     %tr
       %td= link_to @owner.name, user_path(@owner.id)
-      %td= @owner.picks.where("league_id = ? AND season_id = ? AND win = ?", @league.id, @year, true).count
-      - @owner_pick = @owner.picks.where("league_id = ? AND season_id = ? AND week_id = ?", @league.id, @year, @week).first
+      %td= @owner_win_count
       %td= @owner_pick.team_name if @owner_pick
     - if @memberships.any?
       - @memberships.each do |membership|

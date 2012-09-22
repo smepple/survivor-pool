@@ -1,0 +1,44 @@
+/ %td= object.game_time.strftime('%b %d %H:%M')
+%tr
+  %td
+    = image_tag object.away_team_logo_url
+    %strong= object.away_team_name
+    %span.score.pull-right= object.team_score_away
+    - if params[:week_id].to_i >= @current_week
+      - unless current_user.picks.where(league_id: @league.id, season_id: object.season_id, week_id: object.week_id).exists?
+        = form_for @pick, url: league_picks_path, html: { style: "display: inline;" } do |f|
+          = f.hidden_field :league_id, value: @league.id
+          = f.hidden_field :season_id, value: object.season_id
+          = f.hidden_field :week_id, value: object.week_id
+          = f.hidden_field :matchup_id, value: object.id
+          = f.hidden_field :team_name, value: object.away_team_name
+          = f.hidden_field :home, value: 0
+          = f.hidden_field :away, value: 1
+          = f.submit "Pick", class: "btn pull-right"
+    - @current_pick = current_user.picks.find_by_matchup_id(object.id)
+    - if @current_pick
+      - if @current_pick.team_name == object.away_team_name
+        %span.label.label-info.pull-right.pick-label picked
+        - if @current_pick.win?
+          %span.label.label-success.pull-right.pick-label won
+  %td
+    = image_tag object.home_team_logo_url
+    %strong= object.home_team_name
+    %span.score.pull-right= object.team_score_home
+    - if params[:week_id].to_i >= @current_week
+      - unless current_user.picks.where(league_id: @league.id, season_id: object.season_id, week_id: object.week_id).exists?
+        = form_for @pick, url: league_picks_path, html: { style: "display: inline;" } do |f|
+          = f.hidden_field :league_id, value: @league.id
+          = f.hidden_field :season_id, value: object.season_id
+          = f.hidden_field :week_id, value: object.week_id
+          = f.hidden_field :matchup_id, value: object.id
+          = f.hidden_field :team_name, value: object.home_team_name
+          = f.hidden_field :home, value: 1
+          = f.hidden_field :away, value: 0
+          = f.submit "Pick", class: "btn pull-right"
+    - @current_pick = current_user.picks.find_by_matchup_id(object.id)
+    - if @current_pick 
+      - if @current_pick.team_name == object.home_team_name
+        %span.label.label-info.pull-right.pick-label picked
+        - if @current_pick.win?
+          %span.label.label-success.pull-right.pick-label won

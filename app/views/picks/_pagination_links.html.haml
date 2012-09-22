@@ -1,0 +1,9 @@
+.pagination.pagination-centered
+  %ul
+    - @weeks.each do |week|
+      - if week.to_s == params[:week_id]
+        %li.active
+          = link_to "#{week}", "#"
+      - else
+        %li
+          = link_to "#{week}", new_league_pick_path(@league, week_id: week)

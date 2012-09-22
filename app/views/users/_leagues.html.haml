@@ -1,0 +1,5 @@
+- if @leagues.any?
+  - @leagues.each do |league|
+    %tr
+      %td= link_to league.name, league_path(league)
+      %td 1

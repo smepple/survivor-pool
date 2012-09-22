@@ -22,10 +22,14 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @owner = User.find(@league.user_id)
-    @memberships = @league.memberships
     @week = Matchup.where("game_time > ?", Time.now).minimum(:week_id)
     @year = Time.now.strftime('%Y')
+    @owner = User.find(@league.user_id)
+    @owner_pick = @owner.picks.where("league_id = ? AND season_id = ? AND week_id = ?", 
+                                     @league.id, @year, @week).first
+    @owner_win_count = @owner.picks.where("league_id = ? AND season_id = ? AND win = ?", 
+                                          @league.id, @year, true).count
+    @memberships = @league.memberships
   end
 
   def destroy
