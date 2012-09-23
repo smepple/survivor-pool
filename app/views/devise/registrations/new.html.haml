@@ -6,10 +6,10 @@
     = render 'devise/shared/error_messages'
     .control-group
       .control-label= f.label :name
-      .controls= f.email_field :name, placeholder: "Enter first and last name"
+      .controls= f.text_field :name, placeholder: "Enter first and last name"
     .control-group
       .control-label= f.label :username
-      .controls= f.email_field :username, placeholder: "Enter username"
+      .controls= f.text_field :username, placeholder: "Enter username"
     .control-group
       .control-label= f.label :email
       .controls= f.email_field :email, placeholder: "Enter email"

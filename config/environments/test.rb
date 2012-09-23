@@ -1,6 +1,9 @@
 Survivor::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # App name
+  APP_NAME = 'Survivor Pool'
+
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
@@ -34,4 +37,8 @@ Survivor::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Facebook app credentials
+  FACEBOOK_APP_ID = "178493735608739"
+  FACEBOOK_SECRET = "fec2ea191423abe0a83b24c695473e72"
 end

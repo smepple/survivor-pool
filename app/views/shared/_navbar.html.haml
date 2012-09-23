@@ -49,3 +49,7 @@
                   = link_to destroy_user_session_path, method: :delete do
                     %i.icon-off
                     Sign out
+- else
+  = link_to root_path, class: "btn btn-large btn-home" do
+    %i.icon-home
+    Home

@@ -72,4 +72,5 @@ describe User do
   it { should respond_to :memberships }
   it { should respond_to :picks }
   it { should respond_to :password_required? }
+  it { should respond_to :login }
 end

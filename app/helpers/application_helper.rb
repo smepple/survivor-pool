@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def full_title(page_title)
-    base_title = "Survivor Pool"
+    base_title = APP_NAME
     if page_title.empty?
       base_title
     else
