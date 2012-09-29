@@ -38,7 +38,8 @@ Survivor::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
-  # Facebook app credentials
-  FACEBOOK_APP_ID = "178493735608739"
-  FACEBOOK_SECRET = "fec2ea191423abe0a83b24c695473e72"
+  # Various API keys
+  FACEBOOK_APP_ID = '178493735608739'
+  FACEBOOK_SECRET = 'fec2ea191423abe0a83b24c695473e72'
+  # FILEPICKER_API_KEY = 'Ax3lLqeeITrS7ZGTJhKF1z'
 end

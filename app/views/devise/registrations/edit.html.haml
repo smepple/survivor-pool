@@ -6,6 +6,10 @@
   %fieldset
     = render 'devise/shared/error_messages'
     .control-group
+      .control-label= f.label :avatar_url, "Avatar"
+      .controls= f.filepicker_field :avatar_url, button_text: "Pick file", dragdrop: true, button_class: "btn btn-small"
+      .controls= image_tag @user.avatar_url, size: '140x140', class: "img-polaroid avatar" if @user.avatar_url
+    .control-group
       .control-label= f.label :name
       .controls= f.text_field :name
     .control-group

@@ -1,4 +1,19 @@
 .page-header
-  %h1.headline= yield(:headline)
-  %p.lead.muted= yield(:subhead)
-  %blockquote.muted= yield(:subtext)
+  .row-fluid
+    - if controller_name == 'users'
+      .span3
+        - if @user.avatar_url
+          - if @user == current_user
+            = link_to edit_user_registration_path(current_user) do
+              = image_tag @user.avatar_url, size: '140x140', class: "img-polaroid avatar"
+          - else
+            = image_tag @user.avatar_url, size: '140x140', class: "img-polaroid avatar"
+        - else
+          - if @user == current_user
+            = link_to edit_user_registration_path(current_user) do
+              = image_tag "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSDepssUEHQXDDkE9z0Yu5gj-pKR-qxqgisxHpV3g3K2_8bpIX90Q", size: '140x140', class: "img-polaroid avatar"
+          - else
+            = image_tag "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSDepssUEHQXDDkE9z0Yu5gj-pKR-qxqgisxHpV3g3K2_8bpIX90Q", size: '140x140', class: "img-polaroid avatar"
+    %h1.headline= yield(:headline)
+    %p.lead.muted= yield(:subhead)
+    %blockquote.muted= yield(:subtext)

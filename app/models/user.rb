@@ -27,6 +27,7 @@
 #  uid                    :string(255)
 #  username               :string(255)
 #  name                   :string(255)
+#  avatar_url             :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -39,7 +40,7 @@ class User < ActiveRecord::Base
          :validatable, :lockable, :omniauthable
 
   attr_accessible :email, :password, :password_confirmation, 
-                  :remember_me, :username, :name, :login
+                  :remember_me, :username, :name, :login, :avatar_url
 
   has_many :leagues, dependent: :destroy
   has_many :memberships, dependent: :destroy

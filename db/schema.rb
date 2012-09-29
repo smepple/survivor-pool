@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916211302) do
+ActiveRecord::Schema.define(:version => 20120925011338) do
 
   create_table "leagues", :force => true do |t|
     t.string   "name"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20120916211302) do
     t.string   "uid"
     t.string   "username"
     t.string   "name"
+    t.string   "avatar_url"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

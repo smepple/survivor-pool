@@ -9,6 +9,7 @@ gem 'numbers_and_words'
 gem 'json'
 gem 'jquery-rails', '2.0.2'
 gem 'client_side_validations', "~> 3.2.0.beta.6"
+gem 'filepicker-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -31,7 +32,9 @@ group :assets do
   gem 'uglifier', '1.2.3'
 end
 
-gem 'annotate', '2.5.0', group: :development
+group :development do
+  gem 'annotate', '2.5.0'
+end
 
 group :test do
   gem 'capybara', '1.1.2'
